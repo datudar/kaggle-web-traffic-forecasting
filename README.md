@@ -1,4 +1,4 @@
-# Kaggle's "Web Traffic Time Series Forecasting" Competition
+## Kaggle's "Web Traffic Time Series Forecasting" Competition
 
 This project is my solution to Kaggle's "Web Traffic Time Series Forecasting" Competition. It uses the Facebook's Prophet package for predictions, which you can download here: [https://github.com/facebook/prophet](https://github.com/facebook/prophet)
 
@@ -25,7 +25,7 @@ The following data files are needed:
 - train_2.csv
 - key_2.csv
 
-# Output files
+### Output files
 
 There is only one output file:
 - submission_2.csv
