@@ -52,6 +52,7 @@ for i in range(start, end):
     
     if np.sum(df['y']) > 0:
     
+        # Include yearly seasonality    
         model = Prophet(yearly_seasonality=True)
         model.fit(df)
         
