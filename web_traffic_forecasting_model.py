@@ -32,10 +32,10 @@ df_key = pd.read_csv('key_2.csv', index_col='Page', header=0)
 site_name = df_train.index
 df_train = df_train.transpose()
 
-df_train = df_train.fillna(method='ffill')
-df_train = df_train.fillna(method='bfill')
-df_train = np.log(df_train[df_train != 0])
-df_train = df_train.fillna(0)
+df_train = df_train.fillna(method='ffill') # Forward fill missing data
+df_train = df_train.fillna(method='bfill') # Then backfill missing data
+df_train = np.log(df_train[df_train != 0]) # Take the log transform
+df_train = df_train.fillna(0) # Fill NaNs with zeros
 
 #==============================================================================
 # Run model
@@ -54,9 +54,9 @@ end_idx = df_train.shape[1]
 
 # Start and end dates of predictions
 date_format = "%m/%d/%Y"
-first_date = datetime.strptime('9/1/2017', date_format)
-start_date = datetime.strptime('9/13/2017', date_format)
-end_date = datetime.strptime('11/13/2017', date_format)
+first_date = datetime.strptime('9/1/2017', date_format) # First prediction date for Prophet
+start_date = datetime.strptime('9/13/2017', date_format) # First prediction date for Kaggle
+end_date = datetime.strptime('11/13/2017', date_format) # Last prediction date Prophet & Kaggle
 prediction_period = (end_date - first_date).days + 1
 prediction_subperiod = (end_date - start_date).days + 1
 
@@ -67,7 +67,7 @@ df_pred = pd.DataFrame()
 '''
 This section loops through each individual website and makes a prediction only 
 if the website has historical traffic data. If a website doesn't have any 
-historical traffic, then assume zeros for future dates as well.
+historical traffic information, then assume zeros for future dates as well.
 '''
 
 for i in range(start_idx, end_idx):
