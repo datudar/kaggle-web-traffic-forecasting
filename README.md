@@ -1,6 +1,6 @@
 ## Kaggle's "Web Traffic Time Series Forecasting" Competition
 
-The model is my submission to Kaggle's "Web Traffic Time Series Forecasting" Competition. It makes web traffic predictions using Facebook's Prophet library package, which you can download here: [https://github.com/facebook/prophet](https://github.com/facebook/prophet)
+This model is my submission to Kaggle's "Web Traffic Time Series Forecasting" Competition. It makes web traffic predictions using Facebook's Prophet library package, which you can download [here](https://github.com/facebook/prophet).
 
 ### Introduction
 
@@ -8,8 +8,7 @@ The competition asked participants to predict daily web traffic of about 145,000
 
 The competition consisted of two rounds. The first round was a preliminary round used for training and building of models. Predictions were made for the first three months of the year using historical traffic data from the prior two and a half years. The second round lasted only a week and predictions were made for future dates from 9/13/2017 to 11/13/2017. Final scores and rankings will be based on predictions made in this second round only.
 
-For more detailed rules and guidelines, visit the competition
-website here: [https://www.kaggle.com/c/web-traffic-time-series-forecasting](https://www.kaggle.com/c/web-traffic-time-series-forecasting)
+For more detailed information including rules and guidelines, visit the competition website [here](https://www.kaggle.com/c/web-traffic-time-series-forecasting).
 
 ### Implementation
 
