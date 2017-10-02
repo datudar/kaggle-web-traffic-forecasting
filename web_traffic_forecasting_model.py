@@ -3,18 +3,25 @@
 #==============================================================================
 
 print('Import packages...')
-import time     
+from datetime import datetime     
 import numpy as np
 import pandas as pd
 from fbprophet import Prophet
 
 #==============================================================================
+# Custom functions
+#==============================================================================
+
+def days_hrs_mins_secs(time_delta):
+    return time_delta.days, time_delta.seconds//3600, time_delta.seconds//60, (time_delta.seconds//60)%60
+
+#==============================================================================
 # Import data
 #==============================================================================
 
-start_time = time.time()
+start_run_time = datetime.now()
 
-# Read the initial CSV file into a dataframe
+# Read the initial CSV files into dataframes
 df_train = pd.read_csv('train_2.csv', index_col='Page', header=0)
 df_key = pd.read_csv('key_2.csv', index_col='Page', header=0)
 
@@ -24,6 +31,7 @@ df_key = pd.read_csv('key_2.csv', index_col='Page', header=0)
 
 site_name = df_train.index
 df_train = df_train.transpose()
+
 df_train = df_train.fillna(method='ffill')
 df_train = df_train.fillna(method='bfill')
 df_train = np.log(df_train[df_train != 0])
@@ -34,42 +42,64 @@ df_train = df_train.fillna(0)
 #==============================================================================
 
 # Parameters
-start = 0
-end = df_train.shape[1]
-periods = 62
+
+'''
+For a quick trial run, change end_idx to a smaller number (e.g., to make
+predictions on the first 100 websites, set end_idx to 99)
+'''
+
+start_idx = 0
+#end_idx = 99
+end_idx = df_train.shape[1]
+
+# Start and end dates of predictions
+date_format = "%m/%d/%Y"
+first_date = datetime.strptime('9/1/2017', date_format)
+start_date = datetime.strptime('9/13/2017', date_format)
+end_date = datetime.strptime('11/13/2017', date_format)
+prediction_period = (end_date - first_date).days + 1
+prediction_subperiod = (end_date - start_date).days + 1
 
 # Initialization
-index = pd.date_range(start='9/13/2017', end='11/13/2017', freq='D')
+index = pd.date_range(start=start_date, end=end_date, freq='D')
 df_pred = pd.DataFrame()
 
-for i in range(start, end):
+'''
+This section loops through each individual website and makes a prediction only 
+if the website has historical traffic data. If a website's history only
+shows zero traffic, then assume zero traffic for future dates as well.
+'''
+
+for i in range(start_idx, end_idx):
 
     df = df_train.iloc[:,i]
     
-    # Formatting input for Prophet model
+    # Format input for Prophet model
     df = df.reset_index()
     df.columns.values[:] = ['ds', 'y']
     
-    if np.sum(df['y']) > 0:
+
+    if np.sum(df['y']) > 0: 
     
         # Include yearly seasonality    
         model = Prophet(yearly_seasonality=True)
         model.fit(df)
         
-        # Make daily forecasts 74 days out to 11/13/2017
-        future = model.make_future_dataframe(periods=74)
+        # Make daily forecasts until end of prediction period
+        future = model.make_future_dataframe(periods=prediction_period)
         forecast = model.predict(future)
         
         forecast.index = forecast['ds']
         
+        # For speed, do not include the visualizations
         #model.plot(forecast)
         #model.plot_components(forecast)
     
-        pred = pd.DataFrame(forecast['yhat'][forecast['ds'] >= '2017-09-13'])
+        pred = pd.DataFrame(forecast['yhat'][forecast['ds'] >= start_date])
 
     else:
     
-        pred = pd.DataFrame(np.zeros((periods,1)), index=index, columns=['yhat'])    
+        pred = pd.DataFrame(np.zeros((prediction_subperiod,1)), index=index, columns=['yhat'])    
     
     pred.rename(columns = {'yhat':site_name[i]}, inplace=True)
     
@@ -89,8 +119,8 @@ df_final.reset_index(inplace=True)
 df_final['key'] = df_final['level_0'] + '_' + df_final['ds'].astype(str)
 
 # Merge df_final with df_key
-df_final = pd.merge(df_final, df_key, how='inner', left_on='key', right_on=None,
-                    left_index=False, right_index=True)
+df_final = pd.merge(df_final, df_key, how='inner', left_on='key', 
+                    right_on=None, left_index=False, right_index=True)
 
 # Override negative predictions with zeros
 df_final['Visits'] = df_final['Visits'].apply(lambda x: 0 if x < 0 else x)
@@ -99,8 +129,9 @@ df_final['Visits'] = df_final['Visits'].apply(lambda x: 0 if x < 0 else x)
 df_final['Visits'] = np.round(np.exp(df_final['Visits']), decimals=0)
 
 # Create the submission file
-df_submission = df_final.to_csv('submission_2.csv', index=False, columns=['Id','Visits'])
+df_submission = df_final.to_csv('submission_2.csv', index=False, 
+                                columns=['Id','Visits'])
 
-end_time = time.time()
+end_run_time = datetime.now()
 
-print('Script completed in', time.strftime("%Hh %Mm %Ss", time.gmtime(end_time-start_time)))
+print('Completed in {}d {}h {}m {}s'.format(*days_hrs_mins_secs(end_run_time-start_run_time)))

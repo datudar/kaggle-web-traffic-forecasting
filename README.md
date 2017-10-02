@@ -1,29 +1,31 @@
 ## Kaggle's "Web Traffic Time Series Forecasting" Competition
 
-This project is my solution to Kaggle's "Web Traffic Time Series Forecasting" Competition. It makes its predictions using Facebook's Prophet package, which you can download here: [https://github.com/facebook/prophet](https://github.com/facebook/prophet).
+The model is my submission to Kaggle's "Web Traffic Time Series Forecasting" Competition. It makes web traffic predictions using Facebook's Prophet library package, which you can download here: [https://github.com/facebook/prophet](https://github.com/facebook/prophet)
 
 ### Introduction
 
-The competition asks participants to predict daily web traffic of about 145,000 wikipedia articles. For detailed rules and guidelines, visit the competition
+The competition asked participants to predict daily web traffic of about 145,000 wikipedia articles, and I thought it would be a good opportunity to apply Prophet to an interesting problem.
+
+The competition consisted of two rounds. The first round was a preliminary round used for training and building of models. Predictions were made for the first three months of the year using historical traffic data from the prior two and a half years. The second round lasted only a week and predictions were made for future dates from 9/13/2017 to 11/13/2017. Final scores and rankings will be based on predictions made in this second round only.
+
+For more detailed rules and guidelines, visit the competition
 website here: [https://www.kaggle.com/c/web-traffic-time-series-forecasting](https://www.kaggle.com/c/web-traffic-time-series-forecasting)
-
-The competition spanned two rounds.
-
-The first round was a preliminary round that lasted a few months so that participants could train and build their models. Predictions were made for dates in the past. The second round lasted about a week, and this is the round that ultimately counts. Predictions are made for the dates in the future (9/13/2017 to 11/13/2017).
 
 ### Implementation
 
-Run the **web_traffic_forecasting_model.py** file. Note: Currently, Prophet can only make a prediction on a single time series at a time. Therefore, I looped through each individual website to obtain the predictions, and on my machine (Mid-2014 MacBook Pro), the model took about 4 days to fully run.
+Run the **web_traffic_forecasting_model.py** file. 
 
-Due to space limitations on hithub, I only include the model file. To run the model, you also need to download the two input files from the competition website and save them in the same directory as the model file.
+*Note: Prophet can only make a prediction on a single time series at a time. Therefore, I loop through each individual website to obtain the predictions, and on my machine (Mid-2014 MacBook Pro), the model takes about 4 days to finish.*
 
-### Input files
+Due to space limitations on github, I only include the model file. To run the model, you also need to download and save the two input files to the same directory as the model file.
 
-The following data files are needed:
+### Input files for second round
+
+The following data files are required:
 - train_2.csv
 - key_2.csv
 
-### Output files
+### Output files for second round
 
-There is only one output file:
+There is only one output file, which is the submission file:
 - submission_2.csv
