@@ -66,8 +66,8 @@ df_pred = pd.DataFrame()
 
 '''
 This section loops through each individual website and makes a prediction only 
-if the website has historical traffic data. If a website's history only
-shows zero traffic, then assume zero traffic for future dates as well.
+if the website has historical traffic data. If a website doesn't have any 
+historical traffic, then assume zeros for future dates as well.
 '''
 
 for i in range(start_idx, end_idx):
