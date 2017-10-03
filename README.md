@@ -18,17 +18,17 @@ For more detailed information including rules and guidelines, please visit the [
 
 Run the **web_traffic_forecasting_model.py** file that is included in this repository.
 
-*Note: Prophet can only make predictions for a single time series. Therefore, to obtain predictions for all 145,000 websites, it's necessary to loop through each individual website. This takes a very long time, and on my MacBook Pro, the the model took about 4 days to finish.*
+*Note: Prophet can only make predictions for a single time series. Therefore, to obtain predictions for all 145,000 websites, it's necessary to loop through each individual website. This takes a very long time, and on my MacBook Pro, the model took about 4 days to finish.*
 
 Due to space limitations on github, I only include the model file. However, to run the model, you also need to download and save the two input files to the same directory as the model file. You can download those files [here](https://www.kaggle.com/c/web-traffic-time-series-forecasting/data).
 
-### Input files for second round
+### Input files for the second round
 
 The following data files are required:
 - train_2.csv
 - key_2.csv
 
-### Output files for second round
+### Output file for the second round
 
 There is only one output file, which is the submission file:
 - submission_2.csv
