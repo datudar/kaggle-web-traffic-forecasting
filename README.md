@@ -4,11 +4,11 @@ The output of this model is my submission to Kaggle's "Web Traffic Time Series F
 
 ### Introduction
 
-The competition asked participants to predict daily web traffic of about 145,000 Wikipedia articles, and I'd though it would be a great opportunity to apply Prophet to an interesting problem.
+The competition asked participants to predict daily web traffic of about 145,000 Wikipedia articles, and I thought it would be a great opportunity to apply Prophet to an interesting problem.
 
 The competition consisted of two rounds.
 
-The first round lasted for several months. It was a preliminary round that was used for training and testing of models. The predictions that are made are actually for a period in the past (i.e., training data from mid 2015 through 2016 are used to make predictions for the first three months in 2017).
+The first round lasted for several months. It was a preliminary round that was used for training and testing of models. The predictions that are made are actually for a period in the past (i.e., training data from mid 2015 through 2016 is used to make predictions for the first three months in 2017).
 
 The second round lasted only a week. Here your predictions are made for future dates (i.e., training data from the first round plus some additional data from the beginning of 2017 are used to make predictions for September 2017 through November 2017). Final scores and rankings will be based on predictions made in the second round only.
 
