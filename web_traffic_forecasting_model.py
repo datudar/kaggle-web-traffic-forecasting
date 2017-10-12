@@ -43,10 +43,8 @@ df_train = df_train.fillna(0) # Fill NaNs with zeros
 
 # Parameters
 
-'''
-For a quick trial run, change end_idx to a smaller number (e.g., to make
-predictions on the first 100 websites, set end_idx to 99)
-'''
+# For a quick trial run, change end_idx to a smaller number (e.g., to make
+# predictions on the first 100 websites, set end_idx to 99)
 
 start_idx = 0
 #end_idx = 99
@@ -64,11 +62,9 @@ prediction_subperiod = (end_date - start_date).days + 1
 index = pd.date_range(start=start_date, end=end_date, freq='D')
 df_pred = pd.DataFrame()
 
-'''
-This section loops through each individual website and makes a prediction only 
-if the website has historical traffic data. If a website doesn't have any 
-historical traffic information, then assume zeros for future dates as well.
-'''
+# This section loops through each individual website and makes a prediction only 
+# if the website has historical traffic data. If a website doesn't have any 
+# historical traffic information, then assume zeros for future dates as well.
 
 for i in range(start_idx, end_idx):
 
