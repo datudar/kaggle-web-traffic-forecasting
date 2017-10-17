@@ -14,6 +14,12 @@ The second round lasted only a week. Here your predictions are made for future d
 
 For more detailed information including rules and guidelines, please visit the [competition website](https://www.kaggle.com/c/web-traffic-time-series-forecasting).
 
+### Prophet
+
+![Elon Musk's wikipedia article](elon_musk_traffic.png)
+
+![Prophet components](elon_musk_components.png)
+
 ### Implementation
 
 Run the **web_traffic_forecasting_model.py** file that is included in this repository.

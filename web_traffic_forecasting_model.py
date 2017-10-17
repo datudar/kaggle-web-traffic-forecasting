@@ -2,7 +2,6 @@
 # Import packages
 #==============================================================================
 
-print('Import packages...')
 from datetime import datetime     
 import numpy as np
 import pandas as pd
@@ -44,7 +43,7 @@ df_train = df_train.fillna(0) # Fill NaNs with zeros
 # Parameters
 
 # For a quick trial run, change end_idx to a smaller number (e.g., to make
-# predictions on the first 100 websites, set end_idx to 99)
+# predictions on the first 100 websites, set end_idx to 99).
 
 start_idx = 0
 #end_idx = 99
@@ -88,8 +87,8 @@ for i in range(start_idx, end_idx):
         forecast.index = forecast['ds']
         
         # For speed, do not include the visualizations
-        #model.plot(forecast)
-        #model.plot_components(forecast)
+        model.plot(forecast)
+        model.plot_components(forecast)
     
         pred = pd.DataFrame(forecast['yhat'][forecast['ds'] >= start_date])
 
