@@ -43,10 +43,11 @@ df_train = df_train.fillna(0) # Fill NaNs with zeros
 # Parameters
 
 # For a quick trial run, change end_idx to a smaller number (e.g., to make
-# predictions on the first 100 websites, set end_idx to 99).
+# predictions on the first 100 websites, set end_idx to 99). If you want to 
+# run the model on just a single article, I suggest index no. 9033,
+# which I reference in the README file and is the bio page of Elon Musk.
 
 start_idx = 0
-#end_idx = 99
 end_idx = df_train.shape[1]
 
 # Start and end dates of predictions
@@ -72,7 +73,6 @@ for i in range(start_idx, end_idx):
     # Format input for Prophet model
     df = df.reset_index()
     df.columns.values[:] = ['ds', 'y']
-    
 
     if np.sum(df['y']) > 0: 
     
@@ -86,9 +86,9 @@ for i in range(start_idx, end_idx):
         
         forecast.index = forecast['ds']
         
-        # For speed, do not include the visualizations
-        model.plot(forecast)
-        model.plot_components(forecast)
+        # For speed, comment out the following two plot visualizations
+        #model.plot(forecast)
+        #model.plot_components(forecast)
     
         pred = pd.DataFrame(forecast['yhat'][forecast['ds'] >= start_date])
 
