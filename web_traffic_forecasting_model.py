@@ -38,8 +38,12 @@ df_train = df_train.fillna(0) # Fill NaNs with zeros
 
 # For a quick trial run, change end_idx to a smaller number (e.g., to make
 # predictions on the first 100 websites, set end_idx to 99). If you want to 
-# run the model on just a single article, I suggest index no. 9033,
-# which I reference in the README file and is the bio page of Elon Musk.
+# run the model on just a single article, I recommend setting the start and end
+# indexes to 9033 and 9034, respectively. This particular Wikipedia artcile is 
+# the bio page of Elon Musk, which I reference in the README file.
+#
+#start_idx = 9033
+#end_idx = 9034
 
 start_idx = 0
 #end_idx = df_train.shape[1]
