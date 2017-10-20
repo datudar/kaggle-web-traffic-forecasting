@@ -8,24 +8,18 @@ import pandas as pd
 from fbprophet import Prophet
 
 #==============================================================================
-# Custom functions
-#==============================================================================
-
-def days_hrs_mins_secs(time_delta):
-    return time_delta.days, time_delta.seconds//3600, time_delta.seconds//60, (time_delta.seconds//60)%60
-
-#==============================================================================
 # Import data
 #==============================================================================
 
-start_run_time = datetime.now()
+print('======================================================================')
+print('Script started at', datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
 
 # Read the initial CSV files into dataframes
 df_train = pd.read_csv('train_2.csv', index_col='Page', header=0)
 df_key = pd.read_csv('key_2.csv', index_col='Page', header=0)
 
 #==============================================================================
-# Clean data
+# Data preprocessing
 #==============================================================================
 
 site_name = df_train.index
@@ -48,7 +42,8 @@ df_train = df_train.fillna(0) # Fill NaNs with zeros
 # which I reference in the README file and is the bio page of Elon Musk.
 
 start_idx = 0
-end_idx = df_train.shape[1]
+#end_idx = df_train.shape[1]
+end_idx = 99
 
 # Start and end dates of predictions
 date_format = "%m/%d/%Y"
@@ -62,9 +57,9 @@ prediction_subperiod = (end_date - start_date).days + 1
 index = pd.date_range(start=start_date, end=end_date, freq='D')
 df_pred = pd.DataFrame()
 
-# This section loops through each individual website and makes a prediction only 
-# if the website has historical traffic data. If a website doesn't have any 
-# historical traffic information, then assume zeros for future dates as well.
+# This section loops through each individual Wikipedia article and makes a 
+# prediction only if the article has historical traffic data. If an article 
+# doesn't have any historical data, then assume zeros for future dates as well.
 
 for i in range(start_idx, end_idx):
 
@@ -129,4 +124,9 @@ df_submission = df_final.to_csv('submission_2.csv', index=False,
 
 end_run_time = datetime.now()
 
-print('Completed in {}d {}h {}m {}s'.format(*days_hrs_mins_secs(end_run_time-start_run_time)))
+print('Script completed at', datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+print('======================================================================')
+
+#==============================================================================
+# The End
+#==============================================================================
