@@ -19,13 +19,13 @@ Prophet makes predictions on time series data by combining three distinct compon
 As an example, actual and forecasted web traffic of the [Wikipedia article on Elon Musk](https://en.wikipedia.org/wiki/Elon_Musk) is shown below. The black dots (plotted in logarithmic scale) are the article's actual web traffic and the dark blue line is the article's forecasted web traffic.
 
 <p align="center">
-	<img src="example_plot.png" width="250">
+	<img src="example_plot.png" width="500">
 </p>
 
 The forecast is made from aggregating the three components, which are plotted below.
 
 <p align="center">
-	<img src="example_components.png" width="250">
+	<img src="example_components.png" width="500">
 </p>
 
 - The **trend** line reveals that there has been a significant rise in interest in Elon Musk over the past couple of years
