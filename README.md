@@ -1,4 +1,4 @@
-## <p align="center">Web Traffic Time Series Forecasting</p>
+## <p align="center">Web Traffic Forecasting</p>
 
 This model is my solution to Kaggle's "Web Traffic Time Series Forecasting" competition. It makes web traffic predictions using Facebook's [Prophet](https://github.com/facebook/prophet) package.
 
