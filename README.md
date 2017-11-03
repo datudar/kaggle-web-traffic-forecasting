@@ -1,8 +1,8 @@
-### Kaggle's "Web Traffic Time Series Forecasting" Competition
+## <p align="center">Web Traffic Time Series Forecasting</p>
 
-This model is my solution to Kaggle's "Web Traffic Time Series Forecasting" Competition. It makes web traffic predictions using Facebook's [Prophet](https://github.com/facebook/prophet) package.
+This model is my solution to Kaggle's "Web Traffic Time Series Forecasting" competition. It makes web traffic predictions using Facebook's [Prophet](https://github.com/facebook/prophet) package.
 
-#### Introduction
+### Introduction
 
 The competition asked participants to predict daily web traffic of 145,000 Wikipedia articles given actual web traffic data from the prior two years.
 
@@ -12,17 +12,21 @@ Final scores and rankings will be based on predictions from the second round onl
 
 For more detailed information, please visit the [competition website](https://www.kaggle.com/c/web-traffic-time-series-forecasting).
 
-#### Model Analysis
+### Model Analysis
 
 Prophet makes predictions on time series data by combining three distinct components: a linear or logistic trend, a weekly seasonal component, and a yearly seasonal component. 
 
 As an example, actual and forecasted web traffic of the [Wikipedia article on Elon Musk](https://en.wikipedia.org/wiki/Elon_Musk) is shown below. The black dots (plotted in logarithmic scale) are the article's actual web traffic and the dark blue line is the article's forecasted web traffic.
 
-![Prophet plot](example_plot.png)
+<p align="center">
+	<img src="example_plot.png" width="250">
+</p>
 
 The forecast is made from aggregating the three components, which are plotted below.
 
-![Prophet components](example_components.png)
+<p align="center">
+	<img src="example_components.png" width="250">
+</p>
 
 - The **trend** line reveals that there has been a significant rise in interest in Elon Musk over the past couple of years
 - The **weekly** graph reveals that the views to his Wikipedia article is high during the weekdays, yet it wanes during the weekends
