@@ -16,7 +16,7 @@ For more detailed information, please visit the [competition website](https://ww
 
 Prophet makes predictions on time series data by combining three distinct components: a linear or logistic trend, a weekly seasonal component, and a yearly seasonal component. 
 
-As an example, actual and forecasted web traffic of the [Wikipedia article on Elon Musk](https://en.wikipedia.org/wiki/Elon_Musk) is shown below. The black dots (plotted in logarithmic scale) are the article's actual web traffic and the dark blue line is the article's forecasted web traffic.
+As an example, actual and forecasted web traffic of the Wikipedia article on [Elon Musk](https://en.wikipedia.org/wiki/Elon_Musk) is shown below. The black dots (plotted in logarithmic scale) are the article's actual web traffic and the dark blue line is the article's forecasted web traffic.
 
 <p align="center">
 	<img src="example_plot.png" width="500">
