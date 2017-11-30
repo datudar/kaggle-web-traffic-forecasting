@@ -1,6 +1,6 @@
 ## Web Traffic Forecasting
 
-This model is my solution to Kaggle's "Web Traffic Time Series Forecasting" competition. It makes web traffic predictions using Facebook's [Prophet](https://github.com/facebook/prophet) package.
+This [model](web_traffic_forecasting_model.py) is my solution to Kaggle's "Web Traffic Time Series Forecasting" competition. It makes web traffic predictions using Facebook's [Prophet](https://github.com/facebook/prophet) package.
 
 ### Introduction
 
@@ -32,10 +32,8 @@ The forecast is made from aggregating the three components, which are plotted be
 - The **weekly** graph reveals that the views to his Wikipedia article is high during the weekdays, yet it wanes during the weekends
 - The **yearly** graph is likely related to his company's earnings and product announcements as well as his interactions with the news media
 
-### Implementation
-
-Run the **web_traffic_forecasting_model.py** file.
+### Implementation Notes
 
 Due to space limitations on Github, I do not include the input data files. To run the model, you will need to download and save the two input files ([train_2.csv and key_2.csv](https://www.kaggle.com/c/web-traffic-time-series-forecasting/data)) to the same directory as the model file.
 
-*Note: Prophet can only make predictions for a single time series. Therefore, to obtain predictions on all 145,000 Wikipedia articles, it was necessary to loop through each individual article one at a time, and, on my MacBook Pro, the model took about four days to finish.*
+Prophet can only make predictions for a single time series. Therefore, to obtain predictions on all 145,000 Wikipedia articles, it was necessary to loop through each individual article one at a time, and, on my MacBook Pro, the model took about four days to finish.
