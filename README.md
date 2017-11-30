@@ -34,6 +34,5 @@ The forecast is made from aggregating the three components, which are plotted be
 
 ### Implementation Notes
 
-Due to space limitations on Github, I do not include the input data files. To run the model, you will need to download and save the two input files ([train_2.csv and key_2.csv](https://www.kaggle.com/c/web-traffic-time-series-forecasting/data)) to the same directory as the model file.
-
-Prophet can only make predictions for a single time series. Therefore, to obtain predictions on all 145,000 Wikipedia articles, it was necessary to loop through each individual article one at a time, and, on my MacBook Pro, the model took about four days to finish.
+1. Due to space limitations on Github, I do not include the input data files. To run the model, you will need to download and save the two input files ([train_2.csv and key_2.csv](https://www.kaggle.com/c/web-traffic-time-series-forecasting/data)) to the same directory as the model file.
+2. Prophet can only make predictions for a single time series. Therefore, to obtain predictions on all 145,000 Wikipedia articles, it was necessary to loop through each individual article one at a time, and, on my MacBook Pro, the model took about four days to finish.
